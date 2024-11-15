@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Carousel</title>
+    <style>
+      /* 기본 스타일 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1,
+      p {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* 슬라이더 컨테이너 */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+        padding: 0 40px;
+      }
+
+      /* 슬라이드를 담는 컨테이너 */
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      /* 각 페이지 스타일 */
+      .page {
+        min-width: 100%;
+        display: flex;
+        padding: 20px;
+        gap: 30px;
+        justify-content: center;
+      }
+
+      /* 아이템 스타일 (테두리 없애기) */
+      .item {
+        text-align: left;
+        width: 28%;
+        padding: 20px;
+        border: none; /* 테두리 제거 */
+      }
+      .item video {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border: none; /* 동영상 테두리 제거 */
+      }
+      .item h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 10px 0;
+        border: none; /* 제목 테두리 제거 */
+      }
+      .item p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #555;
+        margin-bottom: 10px;
+        border: none; /* 문단 테두리 제거 */
+        text-align: left; /* 왼쪽 정렬 */
+      }
+      .item .date {
+        font-size: 0.8rem;
+        color: #777;
+        border: none; /* 날짜 텍스트 테두리 제거 */
+      }
+
+      /* 화살표 버튼 */
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1;
+      }
+      .arrow.left {
+        left: 10px;
+      }
+      .arrow.right {
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PORTFOLIO</h1>
+    <p>Lorem ipsum dolor sit amet consectetur.</p>
+
+    <div class="carousel-container">
+      <div class="carousel">
+        <!-- 페이지 1 -->
+        <div class="page">
+          <div class="item">
+            <video controls>
+              <source src="video1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project One</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.05</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Two</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.05</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video3.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Three</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.05</div>
+          </div>
+        </div>
+        <!-- 페이지 2 -->
+        <div class="page">
+          <div class="item">
+            <video controls>
+              <source src="video4.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Four</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.06</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video5.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Five</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.06</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video6.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Six</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.06</div>
+          </div>
+        </div>
+        <!-- 페이지 3 -->
+        <div class="page">
+          <div class="item">
+            <video controls>
+              <source src="video7.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Seven</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.07</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video8.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Eight</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.07</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video9.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Project Nine</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">2024.11.07</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 화살표 버튼 -->
+      <button class="arrow left" onclick="moveCarousel(-1)">&#10094;</button>
+      <button class="arrow right" onclick="moveCarousel(1)">&#10095;</button>
+    </div>
+
+    <script>
+      let currentIndex = 0;
+
+      function moveCarousel(direction) {
+        const carousel = document.querySelector(".carousel");
+        const pages = document.querySelectorAll(".page");
+        const totalPages = pages.length;
+
+        currentIndex += direction;
+
+        if (currentIndex < 0) {
+          currentIndex = totalPages - 1;
+        } else if (currentIndex >= totalPages) {
+          currentIndex = 0;
+        }
+
+        const offset = -currentIndex * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+      }
+    </script>
+  </body>
+</html>

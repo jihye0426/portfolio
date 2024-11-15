@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+      /* 기본 스타일 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        background-color: #fff;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* 메인 이미지 스타일 */
+      .main-image {
+        position: relative; /* 절대 위치로 배치할 요소의 기준이 되는 부모 요소 */
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .main-image img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* 아이콘을 오른쪽 맨 위에 배치 */
+      .icon-container {
+        position: absolute;
+        /* top: 0; */
+        right: 10px; /* 오른쪽 10px */
+      }
+
+      .icon {
+        font-size: 2rem; /* 아이콘 크기 */
+        color: #111; /* 아이콘 색상 */
+      }
+
+      /* 이미지 위에 텍스트 스타일 */
+      .overlay-content {
+        position: absolute;
+        top: 50%; /* 수직 가운데 */
+        left: 50%; /* 수평 가운데 */
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #111;
+        /* font-family: "Roboto", sans-serif; */
+      }
+
+      .overlay-content h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 0;
+      }
+      /* 슬라이드 제목 */
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 50px; /* 상단 여백 */
+        margin-bottom: 30px; /* 하단 여백 */
+        text-align: center;
+      }
+
+      /* 슬라이더 컨테이너 */
+      .slider-container {
+        position: relative;
+        width: 100%; /* 슬라이드 컨테이너 너비를 100%로 설정 */
+        max-width: 1200px; /* 최대 너비 설정 */
+        overflow: hidden; /* 슬라이드 바깥의 부분을 숨김 */
+        padding: 0 30px; /* 화살표가 글과 영상을 가리지 않도록 패딩 추가 */
+      }
+
+      /* 슬라이드를 담는 컨테이너 */
+      .slides-wrapper {
+        display: flex;
+        transition: transform 0.5s ease; /* 슬라이드 전환 시 부드러운 애니메이션 */
+      }
+
+      /* 각 슬라이드 */
+      .slide {
+        flex: 0 0 100%; /* 각 슬라이드가 100% 차지하도록 설정 */
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px; /* 하단 여백 */
+      }
+
+      /* 텍스트 설명 부분 */
+      .text-content {
+        flex: 1.5;
+        padding: 20px;
+        padding-left: 50px; /* 왼쪽 여백을 추가하여 텍스트가 오른쪽으로 이동 */
+      }
+      .text-content h2 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      .text-content p {
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 30px; /* 각 p 태그들 사이의 여백 */
+      }
+      .text-content p span {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 30px; /* 각 p 태그들 사이의 여백 */
+      }
+
+      /* 비디오 부분 */
+      .video-content {
+        flex: 2;
+        padding: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        padding-right: 10px; /* 오른쪽 여백을 추가하여 텍스트가 오른쪽으로 이동 */
+      }
+      video {
+        width: 90%;
+        height: auto;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      /* 화살표 버튼 */
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem; /* 화살표 크기 축소 */
+        background: none;
+        color: black;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 5; /* 버튼이 다른 콘텐츠 위에 오도록 설정 */
+      }
+      .arrow-left {
+        left: 10px; /* 왼쪽 화살표 버튼 위치 수정 */
+      }
+      .arrow-right {
+        right: 10px; /* 오른쪽 화살표 버튼 위치 수정 */
+      }
+
+      /* 화면 크기별 반응형 설정 */
+      @media (max-width: 800px) {
+        .text-content h2 {
+          font-size: 1.2rem;
+        }
+        .text-content p {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 메인 이미지 -->
+    <div class="main-image">
+      <img src="images/main.png" alt="Main Image" />
+      <!-- 아이콘을 담는 컨테이너 -->
+      <div class="icon-container">
+        <span class="icon">&#9733;</span>
+        <!-- 별 아이콘 -->
+      </div>
+      <!-- 텍스트를 담는 컨테이너 -->
+      <div class="overlay-content">
+        <h2>PORTFOLIO</h2>
+      </div>
+    </div>
+
+    <!-- 슬라이드 제목 -->
+    <div class="title">Lorem ipsum dolor sit amet consectetur.</div>
+
+    <!-- 슬라이더 컨테이너 -->
+    <div class="slider-container">
+      <!-- 왼쪽 화살표 버튼 -->
+      <button class="arrow arrow-left" onclick="prevSlide()">&#10094;</button>
+
+      <!-- 슬라이드를 감싸는 컨테이너 -->
+      <div class="slides-wrapper" id="slideContainer">
+        <!-- 첫 번째 슬라이드 -->
+        <div class="slide">
+          <div class="text-content">
+            <h2>Premiere Pro</h2>
+            <p>Premiere Pro main 포트폴리오 입니다.</p>
+            <span
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+            >
+          </div>
+          <div class="video-content">
+            <video controls>
+              <source src="video1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- 두 번째 슬라이드 -->
+        <div class="slide">
+          <div class="text-content">
+            <h2>After Effects</h2>
+            <p>After Effects main 포트폴리오 입니다.</p>
+            <span
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+            >
+          </div>
+          <div class="video-content">
+            <video controls>
+              <source src="video2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- 세 번째 슬라이드 -->
+        <div class="slide">
+          <div class="text-content">
+            <h2>3Lorem</h2>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <span
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+            >
+          </div>
+          <div class="video-content">
+            <video controls>
+              <source src="video3.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽 화살표 버튼 -->
+      <button class="arrow arrow-right" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <script>
+      const slideContainer = document.getElementById("slideContainer");
+      const slides = document.querySelectorAll(".slide");
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      function updateSlidePosition() {
+        slideContainer.style.transition = "transform 0.5s ease"; // 슬라이드 애니메이션
+        slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`; // 각 슬라이드가 100%씩 이동
+      }
+
+      // 이전 슬라이드로 이동 (왼쪽)
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--; // 현재 인덱스에서 -1
+        } else {
+          currentIndex = totalSlides - 1; // 첫 번째 슬라이드에서 마지막으로
+        }
+        updateSlidePosition();
+      }
+
+      // 다음 슬라이드로 이동 (오른쪽)
+      function nextSlide() {
+        if (currentIndex < totalSlides - 1) {
+          currentIndex++; // 현재 인덱스에서 +1
+        } else {
+          currentIndex = 0; // 마지막 슬라이드에서 첫 번째로
+        }
+        updateSlidePosition();
+      }
+    </script>
+  </body>
+</html>

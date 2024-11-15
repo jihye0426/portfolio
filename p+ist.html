@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* 메인 이미지 스타일 */
+      .main-placeholder {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        height: 400px;
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* 아이콘을 오른쪽 맨 위에 배치 */
+      .icon-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .icon {
+        font-size: 2rem;
+        color: #111;
+      }
+
+      /* 이미지 자리 텍스트 스타일 */
+      .overlay-content {
+        text-align: center;
+        color: #111;
+      }
+
+      .overlay-content h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 0;
+      }
+
+      /* 슬라이드 제목 */
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      /* 첫 번째 슬라이드 컨테이너 */
+      .slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+        padding: 0 30px;
+      }
+
+      .slides-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .slide {
+        flex: 0 0 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+      }
+
+      .text-content {
+        flex: 1.5;
+        padding: 20px;
+        padding-left: 50px;
+      }
+
+      .text-content h2 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .text-content p {
+        font-size: 0.8rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
+
+      .video-content {
+        flex: 2;
+        padding: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        padding-right: 10px;
+      }
+
+      video {
+        width: 90%;
+        height: auto;
+        border-radius: 10px;
+        padding: 10px;
+      }
+
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 5;
+      }
+
+      .arrow-left {
+        left: 10px;
+      }
+
+      .arrow-right {
+        right: 10px;
+      }
+
+      /* 두 번째 페이지 컨테이너 */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+        padding: 0 40px;
+      }
+
+      .carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .page {
+        min-width: 100%;
+        display: flex;
+        padding: 20px;
+        gap: 30px;
+        justify-content: center;
+        margin-bottom: 50px;
+      }
+
+      .title h1 {
+        font-size: 32px;
+        text-align: center;
+      }
+
+      .title p {
+        font-size: 18px;
+        font-family: "Roboto", sans-serif;
+        text-align: center;
+        font-weight: normal;
+      }
+
+      .item {
+        text-align: left;
+        width: 28%;
+        padding: 20px;
+        border: none;
+      }
+
+      .item video {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border: none;
+      }
+
+      .item h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 10px 0;
+        border: none;
+      }
+
+      .item p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #555;
+        margin-bottom: 10px;
+        border: none;
+      }
+
+      .item .date {
+        font-size: 0.8rem;
+        color: #777;
+        border: none;
+      }
+
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        background: none;
+        color: black;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1;
+      }
+
+      .arrow.left {
+        left: 10px;
+      }
+
+      .arrow.right {
+        right: 10px;
+      }
+
+      /* Instagram Feed 스타일 */
+      /* 전체 페이지 스타일 */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fafafa;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+      }
+
+      /* 피드 컨테이너 */
+      .feed {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 55px;
+      }
+
+      /* 게시물 카드 */
+      .post {
+        background-color: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 8px;
+        width: 350px;
+        overflow: hidden;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 사용자 정보 */
+      .post-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .post-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .post-header .username {
+        font-weight: bold;
+      }
+
+      /* 게시물 이미지 */
+      .post-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* 게시물 상호작용 (좋아요, 댓글 아이콘) */
+      .post-actions {
+        display: flex;
+        padding: 10px;
+      }
+
+      .post-actions img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      /* 게시물 내용 */
+      .post-content {
+        padding: 10px;
+      }
+
+      .likes,
+      .caption {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .likes {
+        font-weight: bold;
+      }
+
+      .caption .username {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 메인 이미지 자리 -->
+    <div class="main-placeholder">
+      <div class="icon-container">
+        <span class="icon">&#9733;</span>
+      </div>
+      <div class="overlay-content">
+        <h2>PORTFOLIO</h2>
+      </div>
+    </div>
+
+    <!-- 슬라이드 제목 -->
+    <div class="title">Lorem ipsum dolor sit amet consectetur.</div>
+
+    <!-- 첫 번째 슬라이드 컨테이너 -->
+    <div class="slider-container">
+      <button class="arrow arrow-left" onclick="prevSlide()">&#10094;</button>
+
+      <div class="slides-wrapper" id="slideContainer">
+        <!-- 첫 번째 슬라이드 -->
+        <div class="slide">
+          <div class="text-content">
+            <h2>Premiere Pro</h2>
+            <p>Premiere Pro main 포트폴리오 입니다.</p>
+            <span
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+            >
+          </div>
+          <div class="video-content">
+            <video controls>
+              <source src="video1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <!-- 두 번째 슬라이드 -->
+        <div class="slide">
+          <div class="text-content">
+            <h2>After Effects</h2>
+            <p>After Effects main 포트폴리오 입니다.</p>
+            <span
+              >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+            >
+          </div>
+          <div class="video-content">
+            <video controls>
+              <source src="video2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow arrow-right" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <!-- h1과 p 추가 -->
+    <div class="title">
+      <h1>Second Page Title</h1>
+      <p>
+        This is the content of the second page. It gives more information about
+        the portfolio and projects.
+      </p>
+    </div>
+
+    <!-- 두 번째 페이지 -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="page">
+          <div class="item">
+            <video controls>
+              <source src="video1.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Premiere Pro</h2>
+            <p>Video editing and post-production work</p>
+            <div class="date">October 2024</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video2.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>After Effects</h2>
+            <p>Animation and motion graphics work</p>
+            <div class="date">November 2024</div>
+          </div>
+        </div>
+        <div class="page">
+          <div class="item">
+            <video controls>
+              <source src="video3.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Final Cut Pro</h2>
+            <p>Film editing for documentary production</p>
+            <div class="date">December 2024</div>
+          </div>
+          <div class="item">
+            <video controls>
+              <source src="video4.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h2>Photoshop</h2>
+            <p>Graphic design and photo manipulation</p>
+            <div class="date">January 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow left" onclick="prevPage()">&#10094;</button>
+      <button class="arrow right" onclick="nextPage()">&#10095;</button>
+    </div>
+
+    <!-- Instagram Feed -->
+    <div class="feed">
+      <!-- 게시물 1 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username1</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">100 likes</div>
+          <div class="caption">
+            <span class="username">username1</span> This is a sample caption for
+            the post.
+          </div>
+        </div>
+      </div>
+
+      <!-- 게시물 2 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username2</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">250 likes</div>
+          <div class="caption">
+            <span class="username">username2</span> Another example caption for
+            this post.
+          </div>
+        </div>
+      </div>
+
+      <!-- 게시물 3 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username3</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">150 likes</div>
+          <div class="caption">
+            <span class="username">username3</span> Here’s a third sample
+            caption.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 슬라이드 컨트롤
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const slideContainer = document.getElementById("slideContainer");
+
+      function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+        slideContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      function nextSlide() {
+        currentSlide++;
+        showSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide--;
+        showSlide(currentSlide);
+      }
+
+      // 페이지 컨트롤
+      let currentPage = 0;
+      const pages = document.querySelectorAll(".page");
+      const carousel = document.getElementById("carousel");
+
+      function showPage(index) {
+        if (index >= pages.length) currentPage = 0;
+        if (index < 0) currentPage = pages.length - 1;
+        carousel.style.transform = `translateX(-${currentPage * 100}%)`;
+      }
+
+      function nextPage() {
+        currentPage++;
+        showPage(currentPage);
+      }
+
+      function prevPage() {
+        currentPage--;
+        showPage(currentPage);
+      }
+    </script>
+  </body>
+</html>

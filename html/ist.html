@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Feed Mockup</title>
+    <style>
+      /* 전체 페이지 스타일 */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fafafa;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+      }
+
+      /* 피드 컨테이너 */
+      .feed {
+        display: flex;
+        flex-wrap: wrap; /* 게시물 나란히 배치 */
+        justify-content: center; /* 가운데 정렬 */
+        gap: 20px; /* 게시물 간격 */
+      }
+
+      /* 게시물 카드 */
+      .post {
+        background-color: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 8px;
+        width: 350px;
+        overflow: hidden;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 사용자 정보 */
+      .post-header {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .post-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .post-header .username {
+        font-weight: bold;
+      }
+
+      /* 게시물 이미지 */
+      .post-image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      /* 게시물 상호작용 (좋아요, 댓글 아이콘) */
+      .post-actions {
+        display: flex;
+        padding: 10px;
+      }
+
+      .post-actions img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      /* 게시물 내용 */
+      .post-content {
+        padding: 10px;
+      }
+
+      .likes,
+      .caption {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .likes {
+        font-weight: bold;
+      }
+
+      .caption .username {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="feed">
+      <!-- 게시물 1 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username1</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">100 likes</div>
+          <div class="caption">
+            <span class="username">username1</span> This is a sample caption for
+            the post.
+          </div>
+        </div>
+      </div>
+
+      <!-- 게시물 2 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username2</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">250 likes</div>
+          <div class="caption">
+            <span class="username">username2</span> Another example caption for
+            this post.
+          </div>
+        </div>
+      </div>
+
+      <!-- 게시물 3 -->
+      <div class="post">
+        <div class="post-header">
+          <img src="https://via.placeholder.com/40" alt="User Profile" />
+          <span class="username">username3</span>
+        </div>
+        <div
+          class="post-image"
+          style="background-image: url('https://via.placeholder.com/400x400')"
+        ></div>
+        <div class="post-actions">
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/like.png"
+            alt="Like"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/speech-bubble.png"
+            alt="Comment"
+          />
+          <img
+            src="https://img.icons8.com/ios-filled/50/000000/paper-plane.png"
+            alt="Share"
+          />
+        </div>
+        <div class="post-content">
+          <div class="likes">150 likes</div>
+          <div class="caption">
+            <span class="username">username3</span> Here’s a third sample
+            caption.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
